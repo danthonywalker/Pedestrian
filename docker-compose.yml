@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=pedestrian
+      - POSTGRES_PASSWORD=password
+    restart: unless-stopped
+
+  bot:
+    image: rg.nl-ams.scw.cloud/dreamexposure/pedestrian:latest
+    environment:
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    volumes:
+      - ./.docker/:/pedestrian/
+    working_dir: /pedestrian/
+    depends_on:
+      - postgres
