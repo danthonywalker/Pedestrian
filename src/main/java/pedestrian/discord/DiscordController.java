@@ -30,7 +30,7 @@ public final class DiscordController {
         this.interactionHandlers = interactionHandlers;
     }
 
-    @GetMapping("/interactions")
+    @PostMapping("/interactions")
     public InteractionResponse interactions(
         @RequestHeader("X-Signature-Ed25519")
         final String signature,
