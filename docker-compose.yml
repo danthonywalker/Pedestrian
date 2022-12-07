@@ -18,5 +18,7 @@ services:
     volumes:
       - ./.docker/:/pedestrian/
     working_dir: /pedestrian/
+    env_file:
+      - ./.docker/variables.env
     depends_on:
       - postgres

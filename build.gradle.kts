@@ -38,10 +38,10 @@ dependencies {
 }
 
 jib {
-    var imageVersion = version.toString()
-    if (imageVersion.contains("SNAPSHOT")) imageVersion = "latest"
-
-    to.image = "rg.nl-ams.scw.cloud/dreamexposure/pedestrian:$imageVersion"
+    to {
+        image = "rg.nl-ams.scw.cloud/dreamexposure/pedestrian"
+        tags = mutableSetOf("latest", pedestrianVersion)
+    }
     from.image = "eclipse-temurin:19-jre-alpine"
 }
 
