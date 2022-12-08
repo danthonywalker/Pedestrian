@@ -9,5 +9,9 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface InteractionResponse {
 
+    static ImmutableInteractionResponse.Builder builder() {
+        return ImmutableInteractionResponse.builder();
+    }
+
     InteractionCallbackType type();
 }

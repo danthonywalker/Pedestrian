@@ -9,5 +9,9 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Interaction {
 
+    static ImmutableInteraction.Builder builder() {
+        return ImmutableInteraction.builder();
+    }
+
     InteractionType type();
 }

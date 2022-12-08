@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
+
 plugins {
     java
 
@@ -8,8 +10,10 @@ plugins {
 }
 
 val bouncyCastleVersion: String = "1.72"
+val gradleVersion: String = "7.6"
+val gradleWrapperVersion: String = gradleVersion
 val immutablesVersion: String = "2.9.2"
-val javaVersion = "19"
+val javaVersion: String = "19"
 val pedestrianVersion: String = "0.0.1.0"
 
 group = "dev.neontech"
@@ -46,6 +50,11 @@ jib {
 }
 
 tasks {
+    wrapper {
+        distributionType = ALL
+        gradleVersion = gradleWrapperVersion
+    }
+
     withType<Test> {
         useJUnitPlatform()
     }
